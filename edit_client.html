@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Client</title></head>
+<body>
+<h2>Edit Client</h2>
+<form method="POST">
+    <input type="text" name="name" value="{{ client.name }}" required>
+    <input type="email" name="email" value="{{ client.email }}" required>
+    <button type="submit">Update</button>
+</form>
+<a href="/">Back to Dashboard</a>
+</body>
+</html>

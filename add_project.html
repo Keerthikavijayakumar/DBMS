@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            background-color: #ff7e5f;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #feb47b;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Project</h2>
+        <form method="POST" action="{{ url_for('add_project') }}">
+            <input type="text" name="name" placeholder="Project Name" required>
+            <input type="text" name="status" placeholder="Project Status" required>
+            
+           <select name="client_id" required>
+    <option value="" disabled selected>Select Client</option>
+    {% for client in clients %}
+        <option value="{{ client[0] }}">{{ client[1] }}</option>
+    {% endfor %}
+</select>
+
+            
+            <input type="date" name="start_date" required>
+            <input type="date" name="end_date" required>
+            
+            <button type="submit">Add Project</button>
+        </form>
+    </div>
+</body>
+</html>
